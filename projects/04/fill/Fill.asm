@@ -11,4 +11,19 @@
 // "white" in every pixel;
 // the screen should remain fully clear as long as no key is pressed.
 
-// Put your code here.
+
+(LOOP)
+    @KBD
+    D=M    \\ Get keyboard status
+    
+    @KEYPUSHED
+    D;JNE  \\ Go to BLACK if there is a input from keyboard
+
+    @LOOP
+    0;JMP
+
+    (KEYPUSHED)
+        @SCREEN
+        M=1
+        @LOOP
+        0;JMP
